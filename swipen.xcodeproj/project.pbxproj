@@ -3,31 +3,63 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		BA429673249D26D4000552B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429672249D26D4000552B2 /* AppDelegate.swift */; };
-		BA429675249D26D4000552B2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA429674249D26D4000552B2 /* GameScene.sks */; };
-		BA429677249D26D4000552B2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA429676249D26D4000552B2 /* Actions.sks */; };
-		BA429679249D26D4000552B2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429678249D26D4000552B2 /* GameScene.swift */; };
-		BA42967B249D26D4000552B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42967A249D26D4000552B2 /* GameViewController.swift */; };
 		BA42967E249D26D4000552B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA42967C249D26D4000552B2 /* Main.storyboard */; };
 		BA429680249D26D5000552B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA42967F249D26D5000552B2 /* Assets.xcassets */; };
-		BA429683249D26D5000552B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA429681249D26D5000552B2 /* LaunchScreen.storyboard */; };
+		BA42968B249D2717000552B2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42968A249D2717000552B2 /* GameScene.swift */; };
+		BA42968D249D272C000552B2 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA42968C249D272C000552B2 /* TutorialScene.swift */; };
+		BA42968F249D2734000552B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA42968E249D2734000552B2 /* LaunchScreen.storyboard */; };
+		BA429692249D273C000552B2 /* ColorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429690249D273C000552B2 /* ColorNode.swift */; };
+		BA429693249D273C000552B2 /* TrophyLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429691249D273C000552B2 /* TrophyLabelNode.swift */; };
+		BA429697249D274D000552B2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429694249D274D000552B2 /* GameViewController.swift */; };
+		BA429698249D274D000552B2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429695249D274D000552B2 /* Settings.swift */; };
+		BA429699249D274D000552B2 /* JKAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA429696249D274D000552B2 /* JKAudioPlayer.swift */; };
+		BA4296A0249D27A2000552B2 /* chop.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BA42969E249D27A2000552B2 /* chop.aiff */; };
+		BA4296A1249D27A2000552B2 /* chop2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BA42969F249D27A2000552B2 /* chop2.wav */; };
+		BA4296A3249D29A9000552B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA4296A2249D29A9000552B2 /* GoogleService-Info.plist */; };
+		BA4296A5249D5CD8000552B2 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4296A4249D5CD8000552B2 /* TestScene.swift */; };
+		BA4296A724A13EC5000552B2 /* AdvancedTutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4296A624A13EC5000552B2 /* AdvancedTutorialScene.swift */; };
+		BA4296A924A3B5B3000552B2 /* AdvancedGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4296A824A3B5B3000552B2 /* AdvancedGameScene.swift */; };
+		BA434A4724B61B41006F7398 /* MenuHUDNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4624B61B41006F7398 /* MenuHUDNode.swift */; };
+		BA434A4924B629CF006F7398 /* PauseMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4824B629CF006F7398 /* PauseMenuNode.swift */; };
+		BA434A4B24B62F75006F7398 /* LoseMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */; };
+		BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */; };
+		BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9550924B615A700353300 /* TrophyMenuNode.swift */; };
+		F6B1DA484A9149EFEDE4C128 /* Pods_swipen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swipen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46833EBF8DDC23320C2821C6 /* Pods-swipen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swipen.release.xcconfig"; path = "Target Support Files/Pods-swipen/Pods-swipen.release.xcconfig"; sourceTree = "<group>"; };
+		4F224813A447CE56E43C59AC /* Pods-swipen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swipen.debug.xcconfig"; path = "Target Support Files/Pods-swipen/Pods-swipen.debug.xcconfig"; sourceTree = "<group>"; };
 		BA42966F249D26D4000552B2 /* swipen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swipen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA429672249D26D4000552B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA429674249D26D4000552B2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		BA429676249D26D4000552B2 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		BA429678249D26D4000552B2 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		BA42967A249D26D4000552B2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BA42967D249D26D4000552B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA42967F249D26D5000552B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BA429682249D26D5000552B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA429684249D26D5000552B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA42968A249D2717000552B2 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BA42968C249D272C000552B2 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		BA42968E249D2734000552B2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA429690249D273C000552B2 /* ColorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNode.swift; sourceTree = "<group>"; };
+		BA429691249D273C000552B2 /* TrophyLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrophyLabelNode.swift; sourceTree = "<group>"; };
+		BA429694249D274D000552B2 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BA429695249D274D000552B2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		BA429696249D274D000552B2 /* JKAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKAudioPlayer.swift; sourceTree = "<group>"; };
+		BA42969E249D27A2000552B2 /* chop.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = chop.aiff; sourceTree = "<group>"; };
+		BA42969F249D27A2000552B2 /* chop2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chop2.wav; sourceTree = "<group>"; };
+		BA4296A2249D29A9000552B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA4296A4249D5CD8000552B2 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
+		BA4296A624A13EC5000552B2 /* AdvancedTutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedTutorialScene.swift; sourceTree = "<group>"; };
+		BA4296A824A3B5B3000552B2 /* AdvancedGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedGameScene.swift; sourceTree = "<group>"; };
+		BA434A4624B61B41006F7398 /* MenuHUDNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHUDNode.swift; sourceTree = "<group>"; };
+		BA434A4824B629CF006F7398 /* PauseMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuNode.swift; sourceTree = "<group>"; };
+		BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseMenuNode.swift; sourceTree = "<group>"; };
+		BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BAD9550924B615A700353300 /* TrophyMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyMenuNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +67,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B1DA484A9149EFEDE4C128 /* Pods_swipen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00B203D999E4D4E3B437F71C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE98DE3BA579223AA436BA96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F224813A447CE56E43C59AC /* Pods-swipen.debug.xcconfig */,
+				46833EBF8DDC23320C2821C6 /* Pods-swipen.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BA429666249D26D4000552B2 = {
 			isa = PBXGroup;
 			children = (
+				BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */,
 				BA429671249D26D4000552B2 /* swipen */,
 				BA429670249D26D4000552B2 /* Products */,
+				AE98DE3BA579223AA436BA96 /* Pods */,
+				00B203D999E4D4E3B437F71C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,17 +113,54 @@
 		BA429671249D26D4000552B2 /* swipen */ = {
 			isa = PBXGroup;
 			children = (
-				BA429672249D26D4000552B2 /* AppDelegate.swift */,
-				BA429674249D26D4000552B2 /* GameScene.sks */,
-				BA429676249D26D4000552B2 /* Actions.sks */,
-				BA429678249D26D4000552B2 /* GameScene.swift */,
-				BA42967A249D26D4000552B2 /* GameViewController.swift */,
+				BA42969E249D27A2000552B2 /* chop.aiff */,
+				BA42969F249D27A2000552B2 /* chop2.wav */,
+				BA42969D249D278B000552B2 /* Nodes */,
+				BA42969A249D274F000552B2 /* Scenes */,
+				BA42969C249D2778000552B2 /* Other */,
 				BA42967C249D26D4000552B2 /* Main.storyboard */,
+				BA42968E249D2734000552B2 /* LaunchScreen.storyboard */,
 				BA42967F249D26D5000552B2 /* Assets.xcassets */,
-				BA429681249D26D5000552B2 /* LaunchScreen.storyboard */,
 				BA429684249D26D5000552B2 /* Info.plist */,
+				BA4296A2249D29A9000552B2 /* GoogleService-Info.plist */,
 			);
 			path = swipen;
+			sourceTree = "<group>";
+		};
+		BA42969A249D274F000552B2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BA42968C249D272C000552B2 /* TutorialScene.swift */,
+				BA4296A624A13EC5000552B2 /* AdvancedTutorialScene.swift */,
+				BA4296A824A3B5B3000552B2 /* AdvancedGameScene.swift */,
+				BA42968A249D2717000552B2 /* GameScene.swift */,
+				BA4296A4249D5CD8000552B2 /* TestScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		BA42969C249D2778000552B2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				BA429694249D274D000552B2 /* GameViewController.swift */,
+				BA429695249D274D000552B2 /* Settings.swift */,
+				BA429672249D26D4000552B2 /* AppDelegate.swift */,
+				BA429696249D274D000552B2 /* JKAudioPlayer.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		BA42969D249D278B000552B2 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				BA429691249D273C000552B2 /* TrophyLabelNode.swift */,
+				BAD9550924B615A700353300 /* TrophyMenuNode.swift */,
+				BA434A4824B629CF006F7398 /* PauseMenuNode.swift */,
+				BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */,
+				BA434A4624B61B41006F7398 /* MenuHUDNode.swift */,
+				BA429690249D273C000552B2 /* ColorNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA429687249D26D5000552B2 /* Build configuration list for PBXNativeTarget "swipen" */;
 			buildPhases = (
+				E5B5A8A96E8742FF64089A5A /* [CP] Check Pods Manifest.lock */,
 				BA42966B249D26D4000552B2 /* Sources */,
 				BA42966C249D26D4000552B2 /* Frameworks */,
 				BA42966D249D26D4000552B2 /* Resources */,
+				B73EB20805B1B7372B055294 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,23 +224,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA42967E249D26D4000552B2 /* Main.storyboard in Resources */,
-				BA429675249D26D4000552B2 /* GameScene.sks in Resources */,
+				BA4296A0249D27A2000552B2 /* chop.aiff in Resources */,
+				BA4296A1249D27A2000552B2 /* chop2.wav in Resources */,
 				BA429680249D26D5000552B2 /* Assets.xcassets in Resources */,
-				BA429683249D26D5000552B2 /* LaunchScreen.storyboard in Resources */,
-				BA429677249D26D4000552B2 /* Actions.sks in Resources */,
+				BA42968F249D2734000552B2 /* LaunchScreen.storyboard in Resources */,
+				BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */,
+				BA4296A3249D29A9000552B2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B73EB20805B1B7372B055294 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-swipen/Pods-swipen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-swipen/Pods-swipen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-swipen/Pods-swipen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5B5A8A96E8742FF64089A5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-swipen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA42966B249D26D4000552B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA429679249D26D4000552B2 /* GameScene.swift in Sources */,
-				BA42967B249D26D4000552B2 /* GameViewController.swift in Sources */,
+				BA42968B249D2717000552B2 /* GameScene.swift in Sources */,
+				BA434A4924B629CF006F7398 /* PauseMenuNode.swift in Sources */,
+				BA42968D249D272C000552B2 /* TutorialScene.swift in Sources */,
+				BA434A4724B61B41006F7398 /* MenuHUDNode.swift in Sources */,
+				BA4296A924A3B5B3000552B2 /* AdvancedGameScene.swift in Sources */,
+				BA4296A724A13EC5000552B2 /* AdvancedTutorialScene.swift in Sources */,
+				BA429699249D274D000552B2 /* JKAudioPlayer.swift in Sources */,
 				BA429673249D26D4000552B2 /* AppDelegate.swift in Sources */,
+				BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */,
+				BA434A4B24B62F75006F7398 /* LoseMenuNode.swift in Sources */,
+				BA4296A5249D5CD8000552B2 /* TestScene.swift in Sources */,
+				BA429693249D273C000552B2 /* TrophyLabelNode.swift in Sources */,
+				BA429698249D274D000552B2 /* Settings.swift in Sources */,
+				BA429697249D274D000552B2 /* GameViewController.swift in Sources */,
+				BA429692249D273C000552B2 /* ColorNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,14 +309,6 @@
 				BA42967D249D26D4000552B2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BA429681249D26D5000552B2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA429682249D26D5000552B2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -290,37 +430,41 @@
 		};
 		BA429688249D26D5000552B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F224813A447CE56E43C59AC /* Pods-swipen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9924DC27A5;
 				INFOPLIST_FILE = swipen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.clipchak.swipen;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clipchak.swipen-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BA429689249D26D5000552B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46833EBF8DDC23320C2821C6 /* Pods-swipen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9924DC27A5;
 				INFOPLIST_FILE = swipen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.clipchak.swipen;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clipchak.swipen-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

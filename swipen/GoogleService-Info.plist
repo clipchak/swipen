@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UILaunchImageFile~iphone</key>
+	<string>LaunchScreen.storyboard</string>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UILaunchImageFile</key>
+	<string>LaunchScreen</string>
+	<key>CLIENT_ID</key>
+	<string>345654099782-057naklioairen7ppj87e8rnvv4ohucr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.345654099782-057naklioairen7ppj87e8rnvv4ohucr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDP7Mei9g48tGSQ85MoCAaMf2w3YbMU9Wk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>345654099782</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.clipchak.swipen-game</string>
+	<key>PROJECT_ID</key>
+	<string>colorswipe-bbbf3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>colorswipe-bbbf3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:345654099782:ios:bc6af92cdce2b335beef47</string>
+	<key>DATABASE_URL</key>
+	<string>https://colorswipe-bbbf3.firebaseio.com</string>
+</dict>
+</plist>
