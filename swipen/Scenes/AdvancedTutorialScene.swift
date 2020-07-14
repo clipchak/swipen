@@ -185,7 +185,7 @@ class AdvancedTutorialScene: SKScene {
             }]))
         
         self.run(.sequence([.wait(forDuration: 12),.run {
-            let gameScene = GameScene(size: self.size)
+            let gameScene = AdvancedGameScene(size: self.size)
             gameScene.scaleMode = .aspectFit
             self.view?.presentScene(gameScene)
             }]))

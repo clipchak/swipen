@@ -74,10 +74,10 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         storeHighScoreAndTotalSwipes()
     }
     
-    func addLoseMenu2(){
+    func addLoseMenu(){
         menuNode = LoseMenuNode(position: CGPoint(x: 0, y: -25))
         currentColor.addChild(menuNode)
-        currentColor.arrow.isHidden = true
+        
         resetGame()
 
         currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3),.wait(forDuration: 0.2),
@@ -86,38 +86,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
                     menuScene.scaleMode = .aspectFit
                     self.view?.presentScene(menuScene)
             }]))
-        
-        menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
-    }
-    
-    func addLoseMenu(){
-        menuNode.position = CGPoint(x: 0, y: -25)
-        menuNode.zPosition = 5
-        currentColor.addChild(menuNode)
-        currentColor.arrow.isHidden = true
-        menuNode.alpha = 0
-
-        let shareScoreButton = makeLabel(text: "share", name: "shareScore", verticalAlignment: menuAlignment, position: CGPoint(x: 0, y: 40), fontColor: .white, fontSize: 18, fontString: fontString)
-        
-        let rateAppButton = makeLabel(text: "rate", name: "rateAppButton", verticalAlignment: menuAlignment, position: CGPoint(x: -100, y: -16), fontColor: .white, fontSize: 40, fontString: fontString)
-        
-        let quitButton = makeLabel(text: "quit", name: "quitButtn", verticalAlignment: menuAlignment, position: CGPoint(x: 90, y: -20), fontColor: .white, fontSize: 40, fontString: fontString)
-        
-        resetGame()
-        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3), .run {
-                self.menuNode.addChild(shareScoreButton)
-                self.menuNode.addChild(rateAppButton)
-                self.menuNode.addChild(quitButton)
-            },.wait(forDuration: 0.2),.run {
-                    let menuScene = AdvancedGameScene(size: self.size)
-                    menuScene.scaleMode = .aspectFit
-                    self.view?.presentScene(menuScene)
-            }]))
-        
         menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
     }
     
     func resetGame(){
+        currentColor.arrow.isHidden = true
         newMenuColor = ColorNode(color: currentColor.color, colorClass: currentColor.colorClass, name: currentColor.name!)
         restartFromALoss = true
         lastGameScore = score
@@ -172,7 +145,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         gameOver = true
         menuButtons.pauseButton.alpha = 0
         
-        addLoseMenu2()
+        addLoseMenu()
         
         storeHighScoreAndTotalSwipes()
     }
@@ -357,11 +330,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         trophyMenuReleased = false
         trophyMenu.run(.sequence([.fadeOut(withDuration: 0.25), .run {
             self.trophyMenu.removeFromParent()
-            }]))
-        logoNode.run(.sequence([.wait(forDuration: 0.3),.fadeIn(withDuration: 0.35),.run {
             self.trophyMenuReleased = true
             self.menuButtons.timerCirclesMenu.isHidden = false
             }]))
+        logoNode.run(.sequence([.wait(forDuration: 0.3),.fadeIn(withDuration: 0.35),.run {
+            }]),withKey: "trophyFade")
         menuButtons.trophyButton.texture = SKTexture(imageNamed: "trophy")
         trophiesOn = false
     }
@@ -476,9 +449,9 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     }
     
     func storeHighScoreAndTotalSwipes(){
-        //store the player's high score to gc
-        //saveHighscore(gameScore: Int(scoreLbl.text!)!)
+        //store the player's high score to gamecenter
         if timedModeOn{
+            //saveHighscore(gameScore: score, boardId: "swipenTimedScore")
             if UserDefaults.standard.object(forKey: "timedHighscore") != nil {
                 let hscore = UserDefaults.standard.integer(forKey: "timedHighscore")
                 if hscore < score{
@@ -488,6 +461,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
                 UserDefaults.standard.set(score, forKey: "timedHighscore")
             }
         }else{
+            //saveHighscore(gameScore: score, boardId: "swipenRegularScore")
             if UserDefaults.standard.object(forKey: "regHighscore") != nil {
                 let hscore = UserDefaults.standard.integer(forKey: "regHighscore")
                 if hscore < score{
@@ -498,6 +472,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
         }
         UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
+        //saveHighscore(gameScore: totalSwipes, boardId: "swipenTotalSwipesNew")
         UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
 
     }
@@ -510,6 +485,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             if (nodesArray.first?.name == currentColor.name || nodesArray.first?.name == "logoNode") && !trophiesOn  {
                 menuButtons.run(.fadeOut(withDuration: 0.10))
                 currentColor.arrow.removeAllActions()
+                logoNode.removeAction(forKey: "trophyFade")
                 if score == 0 {
                     logoNode.run(.sequence([.fadeOut(withDuration: 0.10),.run {
                         self.currentColor.scoreLabel.run(.sequence([.fadeAlpha(to: 0.6, duration: 0.10)]))

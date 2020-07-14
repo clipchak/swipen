@@ -38,21 +38,25 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         if !menuScenePresented{
             if let view = self.view as! SKView? {
-                        
-                // Load the SKScene from 'GameScene.sks'
-                if totalGames == 0 {
-                    let gameScene = AdvancedTutorialScene(size: self.view.frame.size)
-                    gameScene.scaleMode = .aspectFit
-                    view.presentScene(gameScene)
-                                                
-                    view.ignoresSiblingOrder = true
-                } else{
-                    let gameScene = AdvancedGameScene(size: self.view.frame.size)
-                    gameScene.scaleMode = .aspectFit
-                    view.presentScene(gameScene)
-                                                
-                    view.ignoresSiblingOrder = true
-                }
+                let gameScene = IntroScene(size: self.view.frame.size)
+                gameScene.scaleMode = .aspectFit
+                view.presentScene(gameScene)
+                                                    
+                view.ignoresSiblingOrder = true
+//                // Load the SKScene from 'GameScene.sks'
+//                if totalGames == 0 {
+//                    let gameScene = AdvancedTutorialScene(size: self.view.frame.size)
+//                    gameScene.scaleMode = .aspectFit
+//                    view.presentScene(gameScene)
+//                                                
+//                    view.ignoresSiblingOrder = true
+//                } else{
+//                    let gameScene = IntroScene(size: self.view.frame.size)
+//                    gameScene.scaleMode = .aspectFit
+//                    view.presentScene(gameScene)
+//                                                
+//                    view.ignoresSiblingOrder = true
+//                }
                 
             }
         }

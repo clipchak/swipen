@@ -27,6 +27,11 @@
 		BA434A4724B61B41006F7398 /* MenuHUDNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4624B61B41006F7398 /* MenuHUDNode.swift */; };
 		BA434A4924B629CF006F7398 /* PauseMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4824B629CF006F7398 /* PauseMenuNode.swift */; };
 		BA434A4B24B62F75006F7398 /* LoseMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */; };
+		BA434A4E24BCA4B0006F7398 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4D24BCA4B0006F7398 /* Functions.swift */; };
+		BA434A5024BCA4DB006F7398 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A4F24BCA4DB006F7398 /* Variables.swift */; };
+		BA434A5224BCA4E8006F7398 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A5124BCA4E8006F7398 /* Extensions.swift */; };
+		BA434A5424BCAA5F006F7398 /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA434A5324BCAA5F006F7398 /* IntroScene.swift */; };
+		BA434A5A24BCB9A7006F7398 /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA434A5924BCB9A7006F7398 /* LaunchScreen2.storyboard */; };
 		BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */; };
 		BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9550924B615A700353300 /* TrophyMenuNode.swift */; };
 		F6B1DA484A9149EFEDE4C128 /* Pods_swipen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */; };
@@ -58,6 +63,11 @@
 		BA434A4624B61B41006F7398 /* MenuHUDNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHUDNode.swift; sourceTree = "<group>"; };
 		BA434A4824B629CF006F7398 /* PauseMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuNode.swift; sourceTree = "<group>"; };
 		BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseMenuNode.swift; sourceTree = "<group>"; };
+		BA434A4D24BCA4B0006F7398 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		BA434A4F24BCA4DB006F7398 /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		BA434A5124BCA4E8006F7398 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BA434A5324BCAA5F006F7398 /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
+		BA434A5924BCB9A7006F7398 /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BAD9550924B615A700353300 /* TrophyMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyMenuNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,8 +128,10 @@
 				BA42969D249D278B000552B2 /* Nodes */,
 				BA42969A249D274F000552B2 /* Scenes */,
 				BA42969C249D2778000552B2 /* Other */,
+				BA434A4C24BCA48A006F7398 /* Global variables, functions, and extensions */,
 				BA42967C249D26D4000552B2 /* Main.storyboard */,
 				BA42968E249D2734000552B2 /* LaunchScreen.storyboard */,
+				BA434A5924BCB9A7006F7398 /* LaunchScreen2.storyboard */,
 				BA42967F249D26D5000552B2 /* Assets.xcassets */,
 				BA429684249D26D5000552B2 /* Info.plist */,
 				BA4296A2249D29A9000552B2 /* GoogleService-Info.plist */,
@@ -134,6 +146,7 @@
 				BA4296A624A13EC5000552B2 /* AdvancedTutorialScene.swift */,
 				BA4296A824A3B5B3000552B2 /* AdvancedGameScene.swift */,
 				BA42968A249D2717000552B2 /* GameScene.swift */,
+				BA434A5324BCAA5F006F7398 /* IntroScene.swift */,
 				BA4296A4249D5CD8000552B2 /* TestScene.swift */,
 			);
 			path = Scenes;
@@ -161,6 +174,16 @@
 				BA429690249D273C000552B2 /* ColorNode.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		BA434A4C24BCA48A006F7398 /* Global variables, functions, and extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BA434A4F24BCA4DB006F7398 /* Variables.swift */,
+				BA434A4D24BCA4B0006F7398 /* Functions.swift */,
+				BA434A5124BCA4E8006F7398 /* Extensions.swift */,
+			);
+			path = "Global variables, functions, and extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +250,7 @@
 				BA4296A0249D27A2000552B2 /* chop.aiff in Resources */,
 				BA4296A1249D27A2000552B2 /* chop2.wav in Resources */,
 				BA429680249D26D5000552B2 /* Assets.xcassets in Resources */,
+				BA434A5A24BCB9A7006F7398 /* LaunchScreen2.storyboard in Resources */,
 				BA42968F249D2734000552B2 /* LaunchScreen.storyboard in Resources */,
 				BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */,
 				BA4296A3249D29A9000552B2 /* GoogleService-Info.plist in Resources */,
@@ -283,16 +307,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA42968B249D2717000552B2 /* GameScene.swift in Sources */,
+				BA434A5224BCA4E8006F7398 /* Extensions.swift in Sources */,
 				BA434A4924B629CF006F7398 /* PauseMenuNode.swift in Sources */,
 				BA42968D249D272C000552B2 /* TutorialScene.swift in Sources */,
+				BA434A4E24BCA4B0006F7398 /* Functions.swift in Sources */,
 				BA434A4724B61B41006F7398 /* MenuHUDNode.swift in Sources */,
 				BA4296A924A3B5B3000552B2 /* AdvancedGameScene.swift in Sources */,
 				BA4296A724A13EC5000552B2 /* AdvancedTutorialScene.swift in Sources */,
 				BA429699249D274D000552B2 /* JKAudioPlayer.swift in Sources */,
+				BA434A5024BCA4DB006F7398 /* Variables.swift in Sources */,
 				BA429673249D26D4000552B2 /* AppDelegate.swift in Sources */,
 				BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */,
 				BA434A4B24B62F75006F7398 /* LoseMenuNode.swift in Sources */,
 				BA4296A5249D5CD8000552B2 /* TestScene.swift in Sources */,
+				BA434A5424BCAA5F006F7398 /* IntroScene.swift in Sources */,
 				BA429693249D273C000552B2 /* TrophyLabelNode.swift in Sources */,
 				BA429698249D274D000552B2 /* Settings.swift in Sources */,
 				BA429697249D274D000552B2 /* GameViewController.swift in Sources */,
@@ -442,7 +470,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.clipchak.swipen-game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = swipen;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -462,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.clipchak.swipen-game";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = swipen;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

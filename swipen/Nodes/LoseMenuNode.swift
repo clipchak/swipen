@@ -25,9 +25,11 @@ class LoseMenuNode: SKNode{
         self.alpha = 0.0
         self.zPosition = 5
         
-        let shareScoreButton = makeLabel(text: "share", name: "shareScore", verticalAlignment: menuAlignment, position: CGPoint(x: -15, y: height/2 + 40), fontColor: .white, fontSize: 18, fontString: fontString)
-        let rateAppButton = makeLabel(text: "rate", name: "rateAppButton", verticalAlignment: menuAlignment, position: CGPoint(x: -100, y: height/2 - 16), fontColor: .white, fontSize: 40, fontString: fontString)
-        let quitButton = makeLabel(text: "quit", name: "quitButton", verticalAlignment: menuAlignment, position: CGPoint(x: 70, y: height/2 - 15), fontColor: .white, fontSize: 40, fontString: fontString)
+        let shareScoreButton = makeLabel(text: "share", name: "shareScore", verticalAlignment: menuAlignment, position: CGPoint(x: 0, y: 40), fontColor: .white, fontSize: 18, fontString: fontString)
+        
+        let rateAppButton = makeLabel(text: "rate", name: "rateAppButton", verticalAlignment: menuAlignment, position: CGPoint(x: -100, y: -16), fontColor: .white, fontSize: 40, fontString: fontString)
+        
+        let quitButton = makeLabel(text: "quit", name: "quitButtn", verticalAlignment: menuAlignment, position: CGPoint(x: 90, y: -20), fontColor: .white, fontSize: 40, fontString: fontString)
 
         self.addChild(shareScoreButton)
         self.addChild(rateAppButton)
