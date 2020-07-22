@@ -135,6 +135,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(timerCirclesGame)
     }
     
+    
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE SWIPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     func wrongSwipeFunction(){
         if soundOn{
