@@ -11,7 +11,7 @@ import SpriteKit
 //global variables
 var fontString = "Damascus"
 var menuScenePresented = false
-var timedModeOn = false
+var timedModeOn = true
 var restartFromALoss = false
 var soundOn = true
 var timedHighscore = Int(0)

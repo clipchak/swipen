@@ -38,7 +38,6 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         
     var touchPoint = CGPoint()
     var firstTouch = CGPoint()
-    var firstMovedTouch = CGPoint()
     var touching = false
     var movingXDirection = false
     var movingYDirection = false
@@ -187,14 +186,6 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             
             let quit = makeLabel(text: "quit", name: "quitButton", verticalAlignment: menuAlignment, position: CGPoint(x: 90, y: -20), fontColor: .white, fontSize: 40, fontString: fontString)
             
-            let swipeToRestart = makeLabel(text: "swipe           to restart", name: "", verticalAlignment: menuAlignment, position: CGPoint(x: 0, y: -175), fontColor: .white, fontSize: 18, fontString: fontString)
-            let arrow = SKSpriteNode(imageNamed: "arrowRight")
-            arrow.alpha = 0.8
-            arrow.scale(to: CGSize(width: 50, height: 25))
-            arrow.position = CGPoint(x: -13, y: -9)
-            swipeToRestart.addChild(arrow)
-            
-            //restartFromLossMenu.addChild(swipeToRestart)
             restartFromLossMenu.addChild(shareScore)
             restartFromLossMenu.addChild(rateApp)
             restartFromLossMenu.addChild(quit)
@@ -342,7 +333,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     func showTrophies(){
         menuButtons.timerCirclesMenu.isHidden = true
         trophyMenuReleased = false
-        logoNode.removeAction(forKey: "fadeIn")
+        logoNode.removeAllActions()
         logoNode.run(.sequence([.fadeOut(withDuration: 0.25)]))
         menuButtons.trophyButton.texture = SKTexture(imageNamed: "ex")
         trophiesOn = true
@@ -598,7 +589,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         default:
             print("error in touches ended")
         }
-                
+        
         if (currentColor.swipeDirection == direction) && ( xPositionalDifference >= 150 || yPositionalDifference >= 180 || dx > 500 || dy > 500) && !transitionOccurring && correctVectorDirection {
             if timedModeOn {
                 removeTimerInGame()
@@ -717,7 +708,8 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         UIGraphicsEndImageContext()
         
         //Text that will send with the players score when they share
-        let textToShare = "I swiped to \(score). What can you swipe to?"
+        let scoreInt = Int(currentColor.scoreLabel.text!)
+        let textToShare = "I swiped to \(scoreInt ?? 0). What can you swipe to?"
         
         //Sets up and presents the view controller that will allow the player to share their score with friends
         if var top = scene?.view?.window?.rootViewController {

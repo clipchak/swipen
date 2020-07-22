@@ -121,12 +121,12 @@ class AdvancedTutorialScene: SKScene {
         let logoNode = SKSpriteNode(imageNamed: "menuArrow")
         logoNode.size = CGSize(width: 200, height: 100)
         
-        timedButton = makeSpriteNode(imageNamed: "timerOff", name: "timedButton", size: CGSize(width: 50, height: 50), position: CGPoint(x: -width/2 + 45, y: height/2 - safeAreaTop/2 - 48), zPosition: 0, alpha: 1)
+        timedButton = makeSpriteNode(imageNamed: "timerOn", name: "timedButton", size: CGSize(width: 50, height: 50), position: CGPoint(x: -width/2 + 45, y: height/2 - safeAreaTop/2 - 48), zPosition: 0, alpha: 1)
         trophyButton = makeSpriteNode(imageNamed: "trophy", name: "trophyButton", size: CGSize(width: 42, height: 42), position: CGPoint(x: -width/2 + 45, y: -height/2 + safeAreaBottom/2 + 45), zPosition: 0, alpha: 1)
         
-        timedLabel = makeLabel(text: "switch between regular", name: "switch", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 1)!, position: CGPoint(x: 0, y: 175), fontColor: .white, fontSize: 20, fontString: fontString)
+        timedLabel = makeLabel(text: "switch between timed", name: "switch", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 1)!, position: CGPoint(x: 0, y: 175), fontColor: .white, fontSize: 20, fontString: fontString)
         timedLabel.alpha = 0
-        let timedLabel2 = makeLabel(text: "or timed mode", name: "switch", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 1)!, position: CGPoint(x: 0, y: -20), fontColor: .white, fontSize: 20, fontString: fontString)
+        let timedLabel2 = makeLabel(text: "or untimed mode", name: "switch", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 1)!, position: CGPoint(x: 0, y: -20), fontColor: .white, fontSize: 20, fontString: fontString)
         timedLabel.alpha = 0
         timedLabel.addChild(timedLabel2)
         
