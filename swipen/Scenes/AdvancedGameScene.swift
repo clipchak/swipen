@@ -135,7 +135,6 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(timerCirclesGame)
     }
     
-    
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE SWIPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     func wrongSwipeFunction(){
         if soundOn{
@@ -147,7 +146,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         
         addLoseMenu()
         
-        storeHighScoreAndTotalSwipes()
+        UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
+        //saveHighscore(gameScore: totalSwipes, boardId: "swipenTotalSwipesNew")
+        UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
+        
+        //storeHighScoreAndTotalSwipes()
     }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE COLORS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     func initColors(){
@@ -181,6 +184,29 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             currentColor = node
             currentColor.zPosition = 0.1
             
+            let prevScore = Int(currentColor.scoreLabel.text!) ?? 0
+            
+            //animate the new high score
+            var highestScore = Int(0)
+            if timedModeOn {
+                highestScore = UserDefaults.standard.integer(forKey: "timedHighscore")
+            } else{
+                highestScore = UserDefaults.standard.integer(forKey: "regHighscore")
+            }
+
+            let scoreDifference = prevScore - highestScore
+            let scoreIncAction = SKAction.run {
+                self.menuButtons.highscoreLbl.text = "\(highestScore + 1)"
+                highestScore = highestScore + 1
+            }
+            let waitAction = SKAction.wait(forDuration: 0.15)
+            let repeatActions = SKAction.sequence([scoreIncAction,waitAction])
+            let repeatUntil = SKAction.repeat(repeatActions, count: scoreDifference)
+
+            if scoreDifference > 0 {
+                self.run(.sequence([.wait(forDuration: 0.75), repeatUntil]))
+            }
+            
             let shareScore = makeLabel(text: "share", name: "shareScore", verticalAlignment: menuAlignment, position: CGPoint(x: 0, y: 40), fontColor: .white, fontSize: 18, fontString: fontString)
             
             let rateApp = makeLabel(text: "rate", name: "rateAppButton", verticalAlignment: menuAlignment, position: CGPoint(x: -100, y: -16), fontColor: .white, fontSize: 40, fontString: fontString)
@@ -190,6 +216,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             restartFromLossMenu.addChild(shareScore)
             restartFromLossMenu.addChild(rateApp)
             restartFromLossMenu.addChild(quit)
+            storeHighScoreAndTotalSwipes()
             
         } else{
             let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
@@ -229,7 +256,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(nextColor)
         addChild(currentColor)
         print(currentColor.name!)
-        print(newGameNodes)
+        //print(newGameNodes)
 
     }
     
@@ -442,25 +469,29 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     
     func storeHighScoreAndTotalSwipes(){
         //store the player's high score to gamecenter
+        var compareScore = score
+        if score == 0 {
+            compareScore = lastGameScore
+        }
         if timedModeOn{
             //saveHighscore(gameScore: score, boardId: "swipenTimedScore")
             if UserDefaults.standard.object(forKey: "timedHighscore") != nil {
                 let hscore = UserDefaults.standard.integer(forKey: "timedHighscore")
-                if hscore < score{
-                    UserDefaults.standard.set(score, forKey: "timedHighscore")
+                if hscore < compareScore{
+                    UserDefaults.standard.set(compareScore, forKey: "timedHighscore")
                 }
             } else {
-                UserDefaults.standard.set(score, forKey: "timedHighscore")
+                UserDefaults.standard.set(compareScore, forKey: "timedHighscore")
             }
         }else{
             //saveHighscore(gameScore: score, boardId: "swipenRegularScore")
             if UserDefaults.standard.object(forKey: "regHighscore") != nil {
                 let hscore = UserDefaults.standard.integer(forKey: "regHighscore")
-                if hscore < score{
-                    UserDefaults.standard.set(score, forKey: "regHighscore")
+                if hscore < compareScore{
+                    UserDefaults.standard.set(compareScore, forKey: "regHighscore")
                 }
             } else {
-                UserDefaults.standard.set(score, forKey: "regHighscore")
+                UserDefaults.standard.set(compareScore, forKey: "regHighscore")
             }
         }
         UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
