@@ -49,6 +49,7 @@ var orangeColorNodes = [ColorNode]()
 var yellowColorNodes = [ColorNode]()
 //unused
 var grayColorNodes =   [ColorNode(color: UIColor(hexString: "#666666")!, colorClass: "gray", name: "gray01")]
+var blackColorNodes = [ColorNode]()
 
 
 var newGameNodes = [ColorNode]()

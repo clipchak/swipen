@@ -59,72 +59,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         
     }
     
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PAUSING FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    func addPauseMenu(){
-        menuNode = PauseMenuNode(position: CGPoint(x: width/2 + 15, y: -25), score: score, menuButtons: menuButtons)
-        addChild(menuNode)
-        currentColor.arrow.isHidden = true
-        
-        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3), .run {
-            self.menuButtons.pauseButton.name = "resumeButton"
-        }]))
-        menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
-        
-        storeHighScoreAndTotalSwipes()
+    func initColors(){
+        setColorNodesArray()
+        newSetOfColorSprites.append(newGameNodes[0])
+        newSetOfColorSprites.append(newGameNodes[1])
     }
-    
-    func addLoseMenu(){
-        menuNode = LoseMenuNode(position: CGPoint(x: 0, y: -25))
-        currentColor.addChild(menuNode)
-        
-        resetGame()
-
-        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3),.wait(forDuration: 0.2),
-                .run {
-                    let menuScene = AdvancedGameScene(size: self.size)
-                    menuScene.scaleMode = .aspectFit
-                    self.view?.presentScene(menuScene)
-            }]))
-        menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
-    }
-    
-    func resetGame(){
-        currentColor.arrow.isHidden = true
-        newMenuColor = ColorNode(color: currentColor.color, colorClass: currentColor.colorClass, name: currentColor.name!)
-        restartFromALoss = true
-        lastGameScore = score
-    }
-    
-    func removePauseMenu(){
-        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: -75, duration: 0.3), .run {
-            if !self.gameIsPaused {
-                self.currentColor.arrow.isHidden = false
-            }
-        }]))
-        menuNode.removeAllChildren()
-        menuNode.removeFromParent()
-    }
-    
-    func pauseGame(){
-        if(!gameIsPaused && !gameOver){
-            currentColor.scoreLabel.name = "shareScore"
-            menuButtons.pauseButton.texture = SKTexture(imageNamed: "resume")
-            gameIsPaused = true
-            addPauseMenu()
-        }
-    }
-    
-    func unpauseGame(){
-        if gameIsPaused {
-            currentColor.scoreLabel.name = ""
-            menuButtons.pauseButton.texture = SKTexture(imageNamed: "pause")
-            gameIsPaused = false
-            removePauseMenu()
-            menuButtons.pauseButton.name = "pauseButton"
-        }
-    }
-    
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE LABELS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     
     func addLabelsAndButtons(){
         menuButtons = MenuHUDNode(position: CGPoint(x: 0, y: 0))
@@ -135,144 +74,13 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(timerCirclesGame)
     }
     
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE SWIPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    func wrongSwipeFunction(){
-        if soundOn{
-            AudioServicesPlaySystemSound(4095)
-        }
-        gameIsPaused = true
-        gameOver = true
-        menuButtons.pauseButton.alpha = 0
-        
-        addLoseMenu()
-        
-        UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
-        //saveHighscore(gameScore: totalSwipes, boardId: "swipenTotalSwipesNew")
-        UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
-        
-        //storeHighScoreAndTotalSwipes()
-    }
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE COLORS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    func initColors(){
-        setColorNodesArray()
-        newSetOfColorSprites.append(newGameNodes[0])
-        newSetOfColorSprites.append(newGameNodes[1])
-    }
-    
-    func showMenu(){
-        if timedModeOn {
-            runTimerOnMenu()
-        }
-
-        if restartFromALoss {
-            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentInterstitialAd"), object: nil)
-            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadInterstitialAd"), object: nil)
-            menuButtons.pauseButton.alpha = 0
-            menuButtons.trophyButton.alpha = 0
-            menuButtons.timedButton.alpha = 0
-            let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
-            node.scoreLabel.isHidden = false
-            node.arrow.isHidden = true
-            node.scoreLabel.text = "\(lastGameScore)"
-            node.scoreLabel.name = "shareScore"
-            node.scoreLabel.position = CGPoint(x: node.scoreLabel.position.x, y: node.scoreLabel.position.y + 75)
-            restartFromLossMenu.position = CGPoint(x: 0, y: -25)
-            restartFromLossMenu.zPosition = 5
-            restartFromLossMenu.alpha = 0.8
-            
-            node.addChild(restartFromLossMenu)
-            currentColor = node
-            currentColor.zPosition = 0.1
-            
-            let prevScore = Int(currentColor.scoreLabel.text!) ?? 0
-            
-            //animate the new high score
-            var highestScore = Int(0)
-            if timedModeOn {
-                highestScore = UserDefaults.standard.integer(forKey: "timedHighscore")
-            } else{
-                highestScore = UserDefaults.standard.integer(forKey: "regHighscore")
-            }
-
-            let scoreDifference = prevScore - highestScore
-            let scoreIncAction = SKAction.run {
-                self.menuButtons.highscoreLbl.text = "\(highestScore + 1)"
-                highestScore = highestScore + 1
-            }
-            let waitAction = SKAction.wait(forDuration: 0.15)
-            let repeatActions = SKAction.sequence([scoreIncAction,waitAction])
-            let repeatUntil = SKAction.repeat(repeatActions, count: scoreDifference)
-
-            if scoreDifference > 0 {
-                self.run(.sequence([.wait(forDuration: 0.75), repeatUntil]))
-            }
-            
-            let shareScore = makeLabel(text: "share", name: "shareScore", verticalAlignment: menuAlignment, position: CGPoint(x: 0, y: 40), fontColor: .white, fontSize: 18, fontString: fontString)
-            
-            let rateApp = makeLabel(text: "rate", name: "rateAppButton", verticalAlignment: menuAlignment, position: CGPoint(x: -100, y: -16), fontColor: .white, fontSize: 40, fontString: fontString)
-            
-            let quit = makeLabel(text: "quit", name: "quitButton", verticalAlignment: menuAlignment, position: CGPoint(x: 90, y: -20), fontColor: .white, fontSize: 40, fontString: fontString)
-            
-            restartFromLossMenu.addChild(shareScore)
-            restartFromLossMenu.addChild(rateApp)
-            restartFromLossMenu.addChild(quit)
-            storeHighScoreAndTotalSwipes()
-            
-        } else{
-            let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
-            currentColor = node
-            currentColor.scoreLabel.alpha = 0
-            currentColor.arrow.alpha = 0
-            currentColor.zPosition = 0.1
-            currentColor.scoreLabel.text = "\(score)"
-            logoNode = SKSpriteNode(imageNamed: "menuArrow")
-            logoNode.name = "logoNode"
-            logoNode.size = CGSize(width: 200, height: 100)
-            currentColor.addChild(logoNode)
-        }
-        //currentColor.run(moveColorAction, withKey: "moveColor")
-//        let moveColorActionSequence2 = SKAction.sequence([logoWaitAction,.run {
-//            if !self.trophiesOn {
-//                self.currentColor.run(SKAction.sequence([moveLogoRightAction,moveLogoLeftAction]))
-//            }
-//        },delayAction,delayAction,delayAction])
-//        let moveColorAction2 = SKAction.repeatForever(moveColorActionSequence2)
-//        currentColor.run(moveColorAction2, withKey: "moveColor")
-
-        //logoNode.alpha = 0.0
-//        let shrinkAndFade = SKAction.group([.scale(to: CGSize(width: 0, height: 0), duration: 1),.fadeOut(withDuration: 0.5)])
-//        logoNode.run(.sequence([.wait(forDuration: 2),shrinkAndFade,.run {
-//            self.currentColor.arrow.isHidden = false
-//            self.currentColor.scoreLabel.isHidden = false
-//            }]))
-        
-//        logoNode.run(.sequence([.scale(to: CGSize(width: 250, height: 125), duration: 0.8),shrinkAndFade,.run {
-//            self.currentColor.arrow.isHidden = false
-//            self.currentColor.scoreLabel.isHidden = false
-//            }]))
-        //logoNode.run(.fadeIn(withDuration: 0.5),withKey: "fadeIn")
-                
-        nextColor = advancedCopyNode(node: newSetOfColorSprites[1], isNextNode: true, score: score)
-        addChild(nextColor)
-        addChild(currentColor)
-        print(currentColor.name!)
-        //print(newGameNodes)
-
-    }
-    
     func addColorToScreen(){
         if score == 0 {
             showMenu()
         }
         
         if score == 1 {
-            //menuButtons.run(.fadeIn(withDuration: 0.1))
-            menuButtons.trophyButton.alpha = 0
-            menuButtons.trophyButton.removeAllActions()
-            menuButtons.timedButton.alpha = 0
-            menuButtons.soundButton.alpha = 1
-            menuButtons.pauseButton.alpha = 1
-            restartFromALoss = false
+            menuButtons.gameStart()
             
             currentColor = advancedCopyNode(node: newSetOfColorSprites[1], isNextNode: false, score: score)
             newSetOfColorSprites[1].didAppear = true
@@ -320,7 +128,129 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
             
         }
+    }
+    
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PAUSING FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    func addPauseMenu(){
+        currentColor.scoreLabel.name = "shareScore"
+        menuButtons.pauseButton.texture = SKTexture(imageNamed: "resume")
+        gameIsPaused = true
+        menuNode = PauseMenuNode(position: CGPoint(x: width/2 + 15, y: -25), score: score, menuButtons: menuButtons)
+        addChild(menuNode)
+        currentColor.arrow.isHidden = true
         
+        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3), .run {
+            self.menuButtons.pauseButton.name = "resumeButton"
+        }]))
+        menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
+        
+        storeHighScoreAndTotalSwipes()
+    }
+    
+    func addLoseMenu(){
+        menuNode = LoseMenuNode(position: CGPoint(x: 0, y: -25))
+        currentColor.addChild(menuNode)
+        
+        ///reset and track some variables
+        currentColor.arrow.isHidden = true
+        newMenuColor = ColorNode(color: currentColor.color, colorClass: currentColor.colorClass, name: currentColor.name!)
+        restartFromALoss = true
+        lastGameScore = score
+
+        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: 75, duration: 0.3),.wait(forDuration: 0.2),
+                .run {
+                    let menuScene = AdvancedGameScene(size: self.size)
+                    menuScene.scaleMode = .aspectFit
+                    self.view?.presentScene(menuScene)
+            }]))
+        menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
+    }
+    
+    func removePauseMenu(){
+        currentColor.scoreLabel.name = ""
+        menuButtons.pauseButton.texture = SKTexture(imageNamed: "pause")
+        gameIsPaused = false
+        currentColor.scoreLabel.run(.sequence([.moveBy(x: 0, y: -75, duration: 0.3), .run {
+            if !self.gameIsPaused {
+                self.currentColor.arrow.isHidden = false
+            }
+        }]))
+        menuNode.removeAllChildren()
+        menuNode.removeFromParent()
+        menuButtons.pauseButton.name = "pauseButton"
+    }
+    
+    func pauseGame(){
+        if(!gameIsPaused && !gameOver){
+            addPauseMenu()
+        }
+    }
+    
+    func unpauseGame(){
+        if gameIsPaused {
+            removePauseMenu()
+        }
+    }
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE SWIPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    func wrongSwipeFunction(){
+        if soundOn{
+            AudioServicesPlaySystemSound(4095)
+        }
+        gameIsPaused = true
+        gameOver = true
+        menuButtons.pauseButton.alpha = 0
+        
+        addLoseMenu()
+        
+        UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
+        //saveHighscore(gameScore: totalSwipes, boardId: "swipenTotalSwipesNew")
+        
+        //storeHighScoreAndTotalSwipes()
+    }
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE COLORS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    func showMenu(){
+        if timedModeOn {
+            runTimerOnMenu()
+        }
+
+        if restartFromALoss {
+            menuButtons.restartFromLoss()
+            
+            let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
+            node.scoreLabel.isHidden = false
+            node.arrow.isHidden = true
+            node.scoreLabel.text = "\(lastGameScore)"
+            node.scoreLabel.name = "shareScore"
+            node.scoreLabel.position = CGPoint(x: node.scoreLabel.position.x, y: node.scoreLabel.position.y + 75)
+  
+            currentColor = node
+            currentColor.zPosition = 0.1
+            
+            let prevScore = Int(currentColor.scoreLabel.text!) ?? 0
+            restartFromLossMenu = RestartFromLossMenu(position: CGPoint(x: 0, y: -25), prevScore: prevScore, menuButtons: menuButtons)
+            node.addChild(restartFromLossMenu)
+
+            storeHighScoreAndTotalSwipes()
+            //currentColor.run(moveColorAction, withKey: "moveColor")
+            
+        } else{
+            let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
+            currentColor = node
+            currentColor.scoreLabel.alpha = 0
+            currentColor.arrow.alpha = 0
+            currentColor.zPosition = 0.1
+            currentColor.scoreLabel.text = "\(score)"
+            logoNode = SKSpriteNode(imageNamed: "menuArrow")
+            logoNode.name = "logoNode"
+            logoNode.size = CGSize(width: 200, height: 100)
+            currentColor.addChild(logoNode)
+        }
+                
+        nextColor = advancedCopyNode(node: newSetOfColorSprites[1], isNextNode: true, score: score)
+        addChild(nextColor)
+        addChild(currentColor)
+        print(currentColor.name!)
+        print(newGameNodes)
     }
     
     func quitGame(){
@@ -501,11 +431,12 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     }
     
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TOUCH/BUTTON PRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    ///touch functions control all of the gameplay and whether the player loses
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if let location = touch?.location(in: self){
             let nodesArray = self.nodes(at: location)
-            if (nodesArray.first?.name == currentColor.name || nodesArray.first?.name == "logoNode") && !trophiesOn  {
+            if (nodesArray.first?.name == currentColor.name || nodesArray.first?.name == "logoNode") && !trophiesOn  && !gameIsPaused {
                 menuButtons.run(.fadeOut(withDuration: 0.10))
                 currentColor.arrow.removeAllActions()
                 logoNode.removeAction(forKey: "trophyFade")
@@ -741,7 +672,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         
         //Text that will send with the players score when they share
         let scoreInt = Int(currentColor.scoreLabel.text!)
-        let textToShare = "I swiped to \(scoreInt ?? 0). What can you swipe to?"
+        let textToShare = "I'm swipe'n. Can you beat my score of \(scoreInt ?? 0)?"
         
         //Sets up and presents the view controller that will allow the player to share their score with friends
         if var top = scene?.view?.window?.rootViewController {
@@ -758,7 +689,6 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
                 activityVC.excludedActivityTypes = [
                     UIActivity.ActivityType.assignToContact,
                     UIActivity.ActivityType.addToReadingList,
-                    UIActivity.ActivityType.copyToPasteboard,
                     UIActivity.ActivityType.markupAsPDF,
                     UIActivity.ActivityType.openInIBooks,]
                 

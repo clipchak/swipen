@@ -111,6 +111,25 @@ class MenuHUDNode: SKNode{
         }
     }
     
+    func gameStart(){
+        //menuButtons.run(.fadeIn(withDuration: 0.1))
+        trophyButton.alpha = 0
+        trophyButton.removeAllActions()
+        timedButton.alpha = 0
+        soundButton.alpha = 1
+        pauseButton.alpha = 1
+        restartFromALoss = false
+    }
+    
+    func restartFromLoss(){
+        ///display interstitial advertisement then load a new one 
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentInterstitialAd"), object: nil)
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadInterstitialAd"), object: nil)
+        pauseButton.alpha = 0
+        trophyButton.alpha = 0
+        timedButton.alpha = 0
+    }
+    
     func extractSavedVariables(){
         if UserDefaults.standard.object(forKey: "totalSwipes") != nil {
             totalSwipes = UserDefaults.standard.integer(forKey: "totalSwipes")

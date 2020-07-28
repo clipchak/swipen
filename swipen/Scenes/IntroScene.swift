@@ -24,7 +24,7 @@ class IntroScene: SKScene {
             totalGames = UserDefaults.standard.integer(forKey: "totalGames")
         }
         
-        let title = makeLabel(text: "swipe'n", name: "title", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 0)!, position: CGPoint(x: -1, y: -3), fontColor: UIColor(hexString: "#990000")!, fontSize: 35, fontString: "DamascusMedium")
+        let title = makeLabel(text: "swipe'n", name: "title", verticalAlignment: SKLabelVerticalAlignmentMode(rawValue: 0)!, position: CGPoint(x: -1, y: -3), fontColor: UIColor(hexString: "#990000")!, fontSize: 40, fontString: "DamascusMedium")
         title.zPosition = 5
         
         let whiteBG2 = makeSpriteNode(imageNamed: "menuArrow", name: "bg", size: CGSize(width: width * 3, height: height * 4), position: middlePosition, zPosition: 1, alpha: 1)

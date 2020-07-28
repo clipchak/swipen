@@ -34,6 +34,7 @@
 		BA434A5A24BCB9A7006F7398 /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA434A5924BCB9A7006F7398 /* LaunchScreen2.storyboard */; };
 		BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */; };
 		BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9550924B615A700353300 /* TrophyMenuNode.swift */; };
+		BAD9C91224CF9B6C0021DD77 /* RestartFromLossMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9C91124CF9B6C0021DD77 /* RestartFromLossMenu.swift */; };
 		F6B1DA484A9149EFEDE4C128 /* Pods_swipen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		BA434A5924BCB9A7006F7398 /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BAD9550924B615A700353300 /* TrophyMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyMenuNode.swift; sourceTree = "<group>"; };
+		BAD9C91124CF9B6C0021DD77 /* RestartFromLossMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartFromLossMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				BA429691249D273C000552B2 /* TrophyLabelNode.swift */,
 				BAD9550924B615A700353300 /* TrophyMenuNode.swift */,
 				BA434A4824B629CF006F7398 /* PauseMenuNode.swift */,
+				BAD9C91124CF9B6C0021DD77 /* RestartFromLossMenu.swift */,
 				BA434A4A24B62F75006F7398 /* LoseMenuNode.swift */,
 				BA434A4624B61B41006F7398 /* MenuHUDNode.swift */,
 				BA429690249D273C000552B2 /* ColorNode.swift */,
@@ -321,6 +324,7 @@
 				BA434A4B24B62F75006F7398 /* LoseMenuNode.swift in Sources */,
 				BA4296A5249D5CD8000552B2 /* TestScene.swift in Sources */,
 				BA434A5424BCAA5F006F7398 /* IntroScene.swift in Sources */,
+				BAD9C91224CF9B6C0021DD77 /* RestartFromLossMenu.swift in Sources */,
 				BA429693249D273C000552B2 /* TrophyLabelNode.swift in Sources */,
 				BA429698249D274D000552B2 /* Settings.swift in Sources */,
 				BA429697249D274D000552B2 /* GameViewController.swift in Sources */,
