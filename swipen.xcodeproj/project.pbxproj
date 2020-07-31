@@ -35,6 +35,7 @@
 		BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */; };
 		BAD9550A24B615A700353300 /* TrophyMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9550924B615A700353300 /* TrophyMenuNode.swift */; };
 		BAD9C91224CF9B6C0021DD77 /* RestartFromLossMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9C91124CF9B6C0021DD77 /* RestartFromLossMenu.swift */; };
+		BAD9C91424D1110D0021DD77 /* woosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAD9C91324D1110D0021DD77 /* woosh.wav */; };
 		F6B1DA484A9149EFEDE4C128 /* Pods_swipen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102B8456FC6B3DB3EE4B5215 /* Pods_swipen.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		BA6DC60324ACED1C009B28D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BAD9550924B615A700353300 /* TrophyMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyMenuNode.swift; sourceTree = "<group>"; };
 		BAD9C91124CF9B6C0021DD77 /* RestartFromLossMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartFromLossMenu.swift; sourceTree = "<group>"; };
+		BAD9C91324D1110D0021DD77 /* woosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = woosh.wav; path = ../../../../Downloads/woosh.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		BA429671249D26D4000552B2 /* swipen */ = {
 			isa = PBXGroup;
 			children = (
+				BAD9C91324D1110D0021DD77 /* woosh.wav */,
 				BA42969E249D27A2000552B2 /* chop.aiff */,
 				BA42969F249D27A2000552B2 /* chop2.wav */,
 				BA42969D249D278B000552B2 /* Nodes */,
@@ -255,6 +258,7 @@
 				BA429680249D26D5000552B2 /* Assets.xcassets in Resources */,
 				BA434A5A24BCB9A7006F7398 /* LaunchScreen2.storyboard in Resources */,
 				BA42968F249D2734000552B2 /* LaunchScreen.storyboard in Resources */,
+				BAD9C91424D1110D0021DD77 /* woosh.wav in Resources */,
 				BA6DC60424ACED1C009B28D1 /* Default-568h@2x.png in Resources */,
 				BA4296A3249D29A9000552B2 /* GoogleService-Info.plist in Resources */,
 			);

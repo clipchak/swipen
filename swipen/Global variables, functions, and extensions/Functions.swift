@@ -85,7 +85,7 @@ func setColorNodesArray(){
     yellowColorNodes =  [ColorNode(color: UIColor(hexString: "#FFC425")!, colorClass: "yellow", name: "yellow01"),
                          ColorNode(color: UIColor(hexString: "#D3A625")!, colorClass: "yellow", name: "yellow02")
     ]
-    blackColorNodes =  [ColorNode(color: UIColor(hexString: "#000000")!,colorClass: "black", name: "black01")]
+    blackColorNodes =  [ColorNode(color: UIColor(hexString: "#191919")!,colorClass: "black", name: "black01")]
     
     var allColorNodes = [blueColorNodes,purpleColorNodes,yellowColorNodes,greenColorNodes,redColorNodes,orangeColorNodes,blackColorNodes]
     newMenuColor.swipeDirection = "right"

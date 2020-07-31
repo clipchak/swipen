@@ -54,7 +54,7 @@ class IntroScene: SKScene {
             }]))
         }])
         
-        title.run(.sequence([.wait(forDuration: 1), .scale(to: 0.5, duration: 0.3), group]))
+        title.run(.sequence([.wait(forDuration: 1), .scale(to: 0.6, duration: 0.3), group]))
     }
     
 }

@@ -250,7 +250,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(nextColor)
         addChild(currentColor)
         print(currentColor.name!)
-        print(newGameNodes)
+        print("total colors *****: \(newGameNodes.count)")
     }
     
     func quitGame(){
@@ -359,13 +359,13 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         menuNode.addChild(circle2)
         menuNode.addChild(circle3)
         
-        let appearAction = SKAction.sequence([.wait(forDuration: 0.4),.run {
-        circle1.run(.fadeIn(withDuration: 0.5))
-        },.wait(forDuration: 0.5),.run {
-            circle2.run(.fadeIn(withDuration: 0.5))
-        },.wait(forDuration: 0.5),.run {
-            circle3.run(.fadeIn(withDuration: 0.5))
-        },.wait(forDuration: 0.5),.run {
+        let appearAction = SKAction.sequence([.wait(forDuration: 0.27),.run {
+        circle1.run(.fadeIn(withDuration: 0.45))
+        },.wait(forDuration: 0.37),.run {
+            circle2.run(.fadeIn(withDuration: 0.45))
+        },.wait(forDuration: 0.37),.run {
+            circle3.run(.fadeIn(withDuration: 0.45))
+        },.wait(forDuration: 0.37),.run {
             if menuNode.name == "timerCirclesGame" && !self.gameOver{
                 self.wrongSwipeFunction()
             }
@@ -376,7 +376,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
         }])
         
-        let waitAction = SKAction.wait(forDuration: 1.5)
+        let waitAction = SKAction.wait(forDuration: 1.25)
         
         if menuNode.name == "timerCirclesGame"{
             return appearAction
@@ -553,7 +553,8 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             print("error in touches ended")
         }
         
-        if (currentColor.swipeDirection == direction) && ( xPositionalDifference >= 150 || yPositionalDifference >= 180 || dx > 500 || dy > 500) && !transitionOccurring && correctVectorDirection {
+        
+        if (currentColor.swipeDirection == direction) && ( xPositionalDifference >= 150 || yPositionalDifference >= 180 || dx > 500 || dy > 500) && !transitionOccurring && correctVectorDirection && !gameOver {
             if timedModeOn {
                 removeTimerInGame()
             }
@@ -561,6 +562,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             totalSwipes += 1
             score += 1
             nextColor.scoreLabel.text = "\(score)"
+            audio.playSoundEffect(named: "woosh.wav")
             
             currentColor.run(.sequence([moveAction, .run {
                 self.currentColor.removeFromParent()

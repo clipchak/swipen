@@ -73,13 +73,15 @@ open class JKAudioPlayer {
 
     /**Plays a single sound.*/
     open func playSoundEffect(named fileName: String) {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "") {
-            soundPlayer = try? AVAudioPlayer(contentsOf: url)
-            soundPlayer.stop()
-            soundPlayer.numberOfLoops = 0
-            soundPlayer.volume = 0.8
-            soundPlayer.prepareToPlay()
-            soundPlayer.play()
+        if soundOn{
+            if let url = Bundle.main.url(forResource: fileName, withExtension: "") {
+                soundPlayer = try? AVAudioPlayer(contentsOf: url)
+                soundPlayer.stop()
+                soundPlayer.numberOfLoops = 0
+                soundPlayer.volume = 0.8
+                soundPlayer.prepareToPlay()
+                soundPlayer.play()
+            }
         }
     }
 }

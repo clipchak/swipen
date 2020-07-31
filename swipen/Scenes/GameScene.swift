@@ -711,33 +711,25 @@ class GameScene: SKScene, GKGameCenterControllerDelegate {
     }
     
     func moveRight(){
-        if soundOn {
-            audio.playSoundEffect(named: "chop.aiff")
-        }
+       
         let moveAction = SKAction.moveBy(x: width, y: 0, duration: 0.25)
         correctMoveFunction(action: moveAction)
     }
     
     func moveLeft(){
-        if soundOn {
-            audio.playSoundEffect(named: "chop2.wav")
-        }
+       
         let moveAction = SKAction.moveBy(x: -width, y: 0, duration: 0.25)
         correctMoveFunction(action: moveAction)
     }
     
     func moveUp(){
-        if soundOn {
-            audio.playSoundEffect(named: "chop.aiff")
-        }
+        
         let moveAction = SKAction.moveBy(x: 0, y: height, duration: 0.25)
         correctMoveFunction(action: moveAction)
     }
     
     func moveDown(){
-        if soundOn {
-            audio.playSoundEffect(named: "chop2.wav")
-        }
+        
         let moveAction = SKAction.moveBy(x: 0, y: -height, duration: 0.25)
         correctMoveFunction(action: moveAction)
     }

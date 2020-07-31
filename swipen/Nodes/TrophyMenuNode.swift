@@ -36,40 +36,55 @@ class TrophyMenuNode: SKNode{
 //        totalGamesLbl.addChild(totalGamesNmbr)
 //        self.addChild(totalGamesLbl)
         
-        let beginnerTitle = makeLabel(text: "Beginner", position: CGPoint(x: width/2, y: height/2 + 150), fontString: fontString, fontColor: .white, fontSize: 40)
-        let beginnerScore = TrophyLabelNode(text: "timed best of 10", position: CGPoint(x: -65, y: -30))
+        let beginnerTitle = makeLabel(text: "Beginner", position: CGPoint(x: width/2, y: height/2 + 160), fontString: fontString, fontColor: .white, fontSize: 40)
+        let beginnerTimedScore = TrophyLabelNode(text: "timed best of 10", position: CGPoint(x: -65, y: -30))
         if timedHighscore >= 10{
-            beginnerScore.check.texture = SKTexture(imageNamed: "checkmark")
+            beginnerTimedScore.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        let beginnerSwipes = TrophyLabelNode(text: "500 swipes", position: CGPoint(x: -65, y: -60))
-        if totalSwipes >= 500 {
+        let beginnerUntimedScore = TrophyLabelNode(text: "untimed best of 20", position: CGPoint(x: -65, y: -60))
+        if regHighscore >= 20{
+            beginnerUntimedScore.check.texture = SKTexture(imageNamed: "checkmark")
+        }
+        let beginnerSwipes = TrophyLabelNode(text: "250 swipes", position: CGPoint(x: -65, y: -90))
+        if totalSwipes >= 250 {
             beginnerSwipes.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        beginnerTitle.addChild(beginnerScore)
+        beginnerTitle.addChild(beginnerTimedScore)
+        beginnerTitle.addChild(beginnerUntimedScore)
         beginnerTitle.addChild(beginnerSwipes)
         
         let advancedTitle = makeLabel(text: "Advanced", position: CGPoint(x: width/2, y: height/2), fontString: fontString, fontColor: .white, fontSize: 40)
-        let advancedScore = TrophyLabelNode(text: "timed best of 50", position: CGPoint(x: -65, y: -30))
+        let advancedTimedScore = TrophyLabelNode(text: "timed best of 50", position: CGPoint(x: -65, y: -30))
         if timedHighscore >= 50{
-            advancedScore.check.texture = SKTexture(imageNamed: "checkmark")
+            advancedTimedScore.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        let advancedSwipes = TrophyLabelNode(text: "5,000 swipes", position: CGPoint(x: -65, y: -60))
-        if totalSwipes >= 5000 {
+        let advancedUntimedScore = TrophyLabelNode(text: "untimed best of 75", position: CGPoint(x: -65, y: -60))
+        if regHighscore >= 75{
+            advancedUntimedScore.check.texture = SKTexture(imageNamed: "checkmark")
+        }
+        let advancedSwipes = TrophyLabelNode(text: "2,500 swipes", position: CGPoint(x: -65, y: -90))
+        if totalSwipes >= 2500 {
             advancedSwipes.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        advancedTitle.addChild(advancedScore)
+        advancedTitle.addChild(advancedTimedScore)
+        advancedTitle.addChild(advancedUntimedScore)
         advancedTitle.addChild(advancedSwipes)
                
-        let championTitle = makeLabel(text: "Champion", position: CGPoint(x: width/2, y: height/2 - 150), fontString: fontString, fontColor: .white, fontSize: 40)
-        let championScore = TrophyLabelNode(text: "timed best of 100", position: CGPoint(x: -65, y: -30))
-        if timedHighscore >= 100{
-            championScore.check.texture = SKTexture(imageNamed: "checkmark")
+        let championTitle = makeLabel(text: "Champion", position: CGPoint(x: width/2, y: height/2 - 160), fontString: fontString, fontColor: .white, fontSize: 40)
+        let championTimedScore = TrophyLabelNode(text: "timed best of 75", position: CGPoint(x: -65, y: -30))
+        if timedHighscore >= 75{
+            championTimedScore.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        let championSwipes = TrophyLabelNode(text: "15,000 swipes", position: CGPoint(x: -65, y: -60))
-        if totalSwipes >= 15000 {
+        let championUntimedScore = TrophyLabelNode(text: "untimed best of 120", position: CGPoint(x: -65, y: -60))
+        if regHighscore >= 120{
+            championUntimedScore.check.texture = SKTexture(imageNamed: "checkmark")
+        }
+        let championSwipes = TrophyLabelNode(text: "10,000 swipes", position: CGPoint(x: -65, y: -90))
+        if totalSwipes >= 10000 {
             championSwipes.check.texture = SKTexture(imageNamed: "checkmark")
         }
-        championTitle.addChild(championScore)
+        championTitle.addChild(championTimedScore)
+        championTitle.addChild(championUntimedScore)
         championTitle.addChild(championSwipes)
         
         self.addChild(beginnerTitle)
