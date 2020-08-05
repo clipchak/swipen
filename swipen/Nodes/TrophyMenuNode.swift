@@ -31,10 +31,10 @@ class TrophyMenuNode: SKNode{
         totalSwipesLbl.addChild(totalSwipesNmbr)
         self.addChild(totalSwipesLbl)
         
-//        let totalGamesLbl = makeLabel(text: "games", position: CGPoint(x: width/2, y: safeAreaBottom/2 + 55), fontString: fontString, fontColor: .white, fontSize: 22)
-//        let totalGamesNmbr = makeLabel(text: "\(totalGames)", position: CGPoint(x: 0, y: -37), fontString: fontString, fontColor: .white, fontSize: 40)
-//        totalGamesLbl.addChild(totalGamesNmbr)
-//        self.addChild(totalGamesLbl)
+        let totalGamesLbl = makeLabel(text: "games", position: CGPoint(x: width/2, y: safeAreaBottom/2 + 55), fontString: fontString, fontColor: .white, fontSize: 22)
+        let totalGamesNmbr = makeLabel(text: "\(totalGames)", position: CGPoint(x: 0, y: -37), fontString: fontString, fontColor: .white, fontSize: 40)
+        totalGamesLbl.addChild(totalGamesNmbr)
+        self.addChild(totalGamesLbl)
         
         let beginnerTitle = makeLabel(text: "Beginner", position: CGPoint(x: width/2, y: height/2 + 160), fontString: fontString, fontColor: .white, fontSize: 40)
         let beginnerTimedScore = TrophyLabelNode(text: "timed best of 10", position: CGPoint(x: -65, y: -30))

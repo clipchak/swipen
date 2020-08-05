@@ -47,6 +47,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     var xDif = CGFloat()
     var yDif = CGFloat()
 
+    ///this is the order of methods that is called when this scene is launched 
     override func didMove(to view: SKView) {
         menuScenePresented = true
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "authPlayer"), object: nil)
@@ -58,13 +59,14 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addColorToScreen()
         
     }
-    
+    ///set the array of game colors and add the first two colors to the current game
     func initColors(){
         setColorNodesArray()
         newSetOfColorSprites.append(newGameNodes[0])
         newSetOfColorSprites.append(newGameNodes[1])
     }
     
+    ///adds all the menu items like best score, leaderboard, etc to the screen
     func addLabelsAndButtons(){
         menuButtons = MenuHUDNode(position: CGPoint(x: 0, y: 0))
         addChild(menuButtons)
@@ -74,6 +76,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         addChild(timerCirclesGame)
     }
     
+    ///controls the flow of the game and the addition of colors
     func addColorToScreen(){
         if score == 0 {
             showMenu()
@@ -116,6 +119,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             addChild(nextColor)
             transitionOccurring = false
 
+            ///random chance of getting a new color in the game
             if chance(of: 8){
                 newSetOfColorSprites.append(newGameNodes[index])
                 if index == 2 {
@@ -131,6 +135,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
     }
     
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PAUSING FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    ///the menu that appears when the player pauses the game in untimed mode
     func addPauseMenu(){
         currentColor.scoreLabel.name = "shareScore"
         menuButtons.pauseButton.texture = SKTexture(imageNamed: "resume")
@@ -146,7 +151,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         
         storeHighScoreAndTotalSwipes()
     }
-    
+    ///the menu that appears when the player loses
     func addLoseMenu(){
         menuNode = LoseMenuNode(position: CGPoint(x: 0, y: -25))
         currentColor.addChild(menuNode)
@@ -165,7 +170,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }]))
         menuNode.run(.fadeAlpha(to: 0.8, duration: 0.5))
     }
-    
+    ///removes the pause menu when the player unpauses the game
     func removePauseMenu(){
         currentColor.scoreLabel.name = ""
         menuButtons.pauseButton.texture = SKTexture(imageNamed: "pause")
@@ -179,7 +184,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         menuNode.removeFromParent()
         menuButtons.pauseButton.name = "pauseButton"
     }
-    
+    ///pause wrappers
     func pauseGame(){
         if(!gameIsPaused && !gameOver){
             addPauseMenu()
@@ -192,6 +197,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         }
     }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HANDLE SWIPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    ///if the wrong swipe is made, set some variables and add the lose menu
     func wrongSwipeFunction(){
         if soundOn{
             AudioServicesPlaySystemSound(4095)
@@ -212,7 +218,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         if timedModeOn {
             runTimerOnMenu()
         }
-
+        ///if we're restarting from a loss, we're basically spoofing the game to look like it never restarted
         if restartFromALoss {
             menuButtons.restartFromLoss()
             
@@ -234,6 +240,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             //currentColor.run(moveColorAction, withKey: "moveColor")
             
         } else{
+            ///else if were not restarting from a loss we just present the main menu as normal
             let node = advancedCopyNode(node: newSetOfColorSprites[0], isNextNode: false, score: score)
             currentColor = node
             currentColor.scoreLabel.alpha = 0
@@ -252,7 +259,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         print(currentColor.name!)
         print("total colors *****: \(newGameNodes.count)")
     }
-    
+    ///called when a player hits quit from the menu. presents the main menu
     func quitGame(){
         newMenuColor = ColorNode(color: currentColor.color, colorClass: currentColor.colorClass, name: currentColor.name!)
         currentColor.scoreLabel.run(.fadeAlpha(to: 0, duration: 0.2))
@@ -274,7 +281,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
                 )]))
         }
     }
-    
+    ///close/animate the list of achievements
     func closeTrophies(){
         trophyMenuReleased = false
         trophyMenu.run(.sequence([.fadeOut(withDuration: 0.25), .run {
@@ -287,7 +294,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         menuButtons.trophyButton.texture = SKTexture(imageNamed: "trophy")
         trophiesOn = false
     }
-        
+    ///open the list of achievements
     func showTrophies(){
         menuButtons.timerCirclesMenu.isHidden = true
         trophyMenuReleased = false
@@ -304,7 +311,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         }]))
     }
     
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HELPER FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Timer animation/ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     func runTimerOnMenu(){
         menuButtons.timerCirclesMenu.alpha = 1
         menuButtons.timedButton.texture = SKTexture(imageNamed: "timerOn")
@@ -402,6 +409,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         var compareScore = score
         if score == 0 {
             compareScore = lastGameScore
+            if compareScore > 1 {
+                UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
+            }
+        }else if score > 1 {
+            UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
         }
         if timedModeOn{
             //saveHighscore(gameScore: score, boardId: "swipenTimedScore")
@@ -426,12 +438,11 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
         }
         UserDefaults.standard.set(totalSwipes, forKey: "totalSwipes")
         //saveHighscore(gameScore: totalSwipes, boardId: "swipenTotalSwipesNew")
-        UserDefaults.standard.set((totalGames+1), forKey: "totalGames")
-
     }
     
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TOUCH/BUTTON PRESS FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    ///touch functions control all of the gameplay and whether the player loses
+    ///touch functions basicially control all of the gameplay and whether the player loses
+    ///also responsible for the actions that occur when a menu button is pressed
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if let location = touch?.location(in: self){
@@ -491,7 +502,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
         }
     }
-    
+    ///some math that controls what happens when a player is dragging a color around
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
             let location = t.location(in: self)
@@ -520,7 +531,8 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
         }
     }
-    
+    ///some math that controls what happens when a player is dragging a color around
+    ///also controls the outcome of the swipe like whether it was in the right or wrong direction
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         touching = false
         directionPicked = false
@@ -593,7 +605,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }
         }
     }
-    
+    ///touch might be cancelled by a phone call, notification, app leave, etc
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         touching = false
         print("touch cancelled")
@@ -616,7 +628,7 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
             }]))
         }
     }
-    
+    ///some interesting math that controls the velocity/movement of a swipe. this method is called once every frame
     override func update(_ currentTime: TimeInterval) {
         if touching {
             let dt:CGFloat = 1.0/60.0
@@ -668,26 +680,26 @@ class AdvancedGameScene: SKScene, GKGameCenterControllerDelegate {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SHARING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     func shareScore(){
-        //Capture image of player's screen showing their score
+        ///Capture image of player's screen showing their score
         let image = view?.snapshot
         UIGraphicsEndImageContext()
         
-        //Text that will send with the players score when they share
+        ///Text that will send with the players score when they share
         let scoreInt = Int(currentColor.scoreLabel.text!)
         let textToShare = "I'm swipe'n. Can you beat my score of \(scoreInt ?? 0)?"
         
-        //Sets up and presents the view controller that will allow the player to share their score with friends
+        ///Sets up and presents the view controller that will allow the player to share their score with friends
         if var top = scene?.view?.window?.rootViewController {
             while let presentedViewController = top.presentedViewController {
                 top = presentedViewController
             }
             
-            //Website links to the app
+            ///Website links to the app
             if let myWebsite = URL(string: "http://itunes.apple.com/app/1519496187/") {
                 let objectsToShare = [textToShare, myWebsite, image!] as [Any]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                 
-                //Excluded activities
+                ///Excluded activities
                 activityVC.excludedActivityTypes = [
                     UIActivity.ActivityType.assignToContact,
                     UIActivity.ActivityType.addToReadingList,
