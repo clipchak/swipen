@@ -23,18 +23,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         JKAudioPlayer.canShareAudio = true
         initAdMobInterstitial()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.authPlayer), name: NSNotification.Name(rawValue: "authPlayer"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.presentInterstitialAd), name: NSNotification.Name(rawValue: "presentInterstitialAd"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.initAdMobInterstitial), name: NSNotification.Name(rawValue: "loadInterstitialAd"), object: nil)
-        
         width = self.view.frame.width
         height = self.view.frame.height
         
         if UserDefaults.standard.object(forKey: "totalGames") != nil {
             totalGames = UserDefaults.standard.integer(forKey: "totalGames")
         }
+        
+        addObservers()
         
         if !menuScenePresented{
             if let view = self.view as! SKView? {
@@ -63,6 +59,15 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 
         super.viewDidLoad()
         
+    }
+    
+    ///adds observers to these functions so they can be called anywhere in the app
+    func addObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.authPlayer), name: NSNotification.Name(rawValue: "authPlayer"), object: nil)
+          
+        NotificationCenter.default.addObserver(self, selector: #selector(self.presentInterstitialAd), name: NSNotification.Name(rawValue: "presentInterstitialAd"), object: nil)
+          
+        NotificationCenter.default.addObserver(self, selector: #selector(self.initAdMobInterstitial), name: NSNotification.Name(rawValue: "loadInterstitialAd"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {

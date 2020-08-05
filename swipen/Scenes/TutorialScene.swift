@@ -6,6 +6,10 @@
 //  Copyright © 2020 clipchak. All rights reserved.
 //
 
+/*
+scene that runs the tutorial
+*/
+
 import SpriteKit
 import GameplayKit
 import GameKit

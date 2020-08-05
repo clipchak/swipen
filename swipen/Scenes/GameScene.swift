@@ -6,6 +6,10 @@
 //  Copyright © 2020 clipchak. All rights reserved.
 //
 
+/*
+ old and much worse game scene that used swipegestures instead of dragging 
+*/
+
 import SpriteKit
 import GameplayKit
 import GameKit

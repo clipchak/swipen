@@ -6,6 +6,10 @@
 //  Copyright © 2020 clipchak. All rights reserved.
 //
 
+/*
+ This scene animates the arrow on the app when it launches
+ */
+
 import SpriteKit
 
 class IntroScene: SKScene {

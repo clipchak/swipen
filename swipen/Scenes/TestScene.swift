@@ -6,6 +6,10 @@
 //  Copyright © 2020 clipchak. All rights reserved.
 //
 
+/*
+ a scene that I used to figure out how to move a color around the screen
+*/
+
 import Foundation
 import SpriteKit
 
