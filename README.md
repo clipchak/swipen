@@ -2,7 +2,6 @@
 
 ![Image](https://github.com/clipchak/swipen/blob/master/gameDemo.gif)
 
-iOS game - more details added soon
 
 ## Technologies 
 - [Apple's SpriteKit](https://developer.apple.com/spritekit/)
